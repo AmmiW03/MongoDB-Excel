@@ -48,13 +48,6 @@ namespace MongoExcelMigration.Modelos
                     };
                     for (int j = 0; j < row.Cells.Count; j++)
                     {
-                        empleado.em_fecnac = new DateTime(1900, 1, 1, 6, 0, 0, DateTimeKind.Utc);
-                        empleado.dtEm_fecnac = new DateTime(1900, 1, 1, 6, 0, 0, DateTimeKind.Utc);
-
-                        empleado.dtEm_fnewemp = new DateTime(1900, 1, 1, 6, 0, 0, DateTimeKind.Utc);
-                        empleado.dtEm_fnewnom = new DateTime(1900, 1, 1, 6, 0, 0, DateTimeKind.Utc);
-                        empleado.dtEm_fechori = new DateTime(1900, 1, 1, 6, 0, 0, DateTimeKind.Utc);
-                        empleado.dtEm_fecimss = new DateTime(1900, 1, 1, 6, 0, 0, DateTimeKind.Utc);
 
                         switch (dataf.FormatCellValue(headRow.GetCell(j)))
                         {
@@ -80,23 +73,23 @@ namespace MongoExcelMigration.Modelos
                                 break;
 
                             case "Fecha Ingreso":
-                            empleado.dtEm_fechai = DateTime.ParseExact(row.GetCell(j).StringCellValue,"MM/dd/yyyy",CultureInfo.InvariantCulture);
+                                empleado.dtEm_fechai = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
                                 break;
 
                             case "Fecha Antigüedad":
                                 empleado.dtEm_fechant = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            break;
+                                break;
 
                             case "Fecha Baja":
-                            try
-                            {
-                                empleado.dtEm_fechab = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            }
-                            catch
-                            {
-                                empleado.dtEm_fechab = fecha;
-                            }
-                            break;
+                                try
+                                {
+                                    empleado.dtEm_fechab = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                catch
+                                {
+                                    empleado.dtEm_fechab = fecha;
+                                }
+                                break;
 
                             case "U.Camb Sal  ":
                                 try
@@ -109,15 +102,15 @@ namespace MongoExcelMigration.Modelos
                                 }
                                 break;
                             case "Fecha Planta":
-                            try
-                            {
-                                empleado.dtEm_fecplan = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            }
-                            catch
-                            {
-                                empleado.dtEm_fecplan = fecha;
-                            }
-                            break;
+                                try
+                                {
+                                    empleado.dtEm_fecplan = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                catch
+                                {
+                                    empleado.dtEm_fecplan = fecha;
+                                }
+                                break;
 
                             case "Fecha U.Cont. ":
                                 try
@@ -382,9 +375,9 @@ namespace MongoExcelMigration.Modelos
                                 empleado.sEm_cfahorr = dataf.FormatCellValue(row.GetCell(j));
                                 break;
 
-                        case "C.P. Asis.":
+                            case "C.P. Asis.":
                                 int cpAsisAux;
-                                if(int.TryParse(dataf.FormatCellValue(row.GetCell(j)),out cpAsisAux))
+                                if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out cpAsisAux))
                                     empleado.iEm_asisten = cpAsisAux;
                                 else
                                     empleado.iEm_asisten = cpAsisAux;
@@ -435,15 +428,15 @@ namespace MongoExcelMigration.Modelos
                                 break;
 
                             case "F.I.C. INFONAVIT":
-                            try
-                            {
-                                empleado.dtEm_fcreinf = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            }
-                            catch
-                            {
-                                empleado.dtEm_fcreinf = fecha;
-                            }
-                            break;
+                                try
+                                {
+                                    empleado.dtEm_fcreinf = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                catch
+                                {
+                                    empleado.dtEm_fcreinf = fecha;
+                                }
+                                break;
 
                             case "T.Des. INFONAVIT":
                                 empleado.sEm_tipoinf = dataf.FormatCellValue(row.GetCell(j));
@@ -459,11 +452,11 @@ namespace MongoExcelMigration.Modelos
 
                             case "P.V. Aut":
                                 int pvAutAux;
-                                if(int.TryParse(dataf.FormatCellValue(row.GetCell(j)),out pvAutAux))
+                                if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out pvAutAux))
                                     empleado.iEm_porprim = pvAutAux;
                                 else
                                     empleado.iEm_porprim = pvAutAux;
-                            break;
+                                break;
 
                             //Pendiente
                             //case "Ind. Vac":
@@ -608,7 +601,7 @@ namespace MongoExcelMigration.Modelos
 
                             case "P Fin":
                                 int pFinAux;
-                                if(int.TryParse(dataf.FormatCellValue(row.GetCell(j)),out  pFinAux))
+                                if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out pFinAux))
                                     empleado.iRh_fpadre = pFinAux;
                                 else
                                     empleado.iRh_fpadre = pFinAux;
@@ -631,15 +624,15 @@ namespace MongoExcelMigration.Modelos
                                 break;
 
                             case "F.Nac. Asegurado":
-                            try
-                            {
-                                empleado.dtRh_gmmfnac = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            }
-                            catch
-                            {
-                                empleado.dtRh_gmmfnac = fecha;
-                            }
-                            break;
+                                try
+                                {
+                                    empleado.dtRh_gmmfnac = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                catch
+                                {
+                                    empleado.dtRh_gmmfnac = fecha;
+                                }
+                                break;
 
                             case "Sexo":
                                 if (empleado.sEm_sexo == null)
@@ -721,27 +714,27 @@ namespace MongoExcelMigration.Modelos
 
                             case "Plan Seg.  Vida":
                                 int plansvAux;
-                            if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out plansvAux))
-                                empleado.iRh_plansv = plansvAux;
-                            else
-                                empleado.iRh_plansv = plansvAux;
+                                if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out plansvAux))
+                                    empleado.iRh_plansv = plansvAux;
+                                else
+                                    empleado.iRh_plansv = plansvAux;
                                 break;
 
                             case "P.A. S.V.":
-                            int aplansvAux;
-                            if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out aplansvAux))
-                                empleado.iRh_aplansv = aplansvAux;
-                            else
-                                empleado.iRh_aplansv = aplansvAux;
-                            break;
+                                int aplansvAux;
+                                if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out aplansvAux))
+                                    empleado.iRh_aplansv = aplansvAux;
+                                else
+                                    empleado.iRh_aplansv = aplansvAux;
+                                break;
 
                             case "Prima Aseg.S.V.":
-                            int psvSumAux;
-                            if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out psvSumAux))
-                                empleado.fRh_psvsuma = psvSumAux;
-                            else
-                                empleado.fRh_psvsuma = psvSumAux;
-                            break;
+                                int psvSumAux;
+                                if (int.TryParse(dataf.FormatCellValue(row.GetCell(j)), out psvSumAux))
+                                    empleado.fRh_psvsuma = psvSumAux;
+                                else
+                                    empleado.fRh_psvsuma = psvSumAux;
+                                break;
 
                             case "Ubicación del Colaborador":
                                 empleado.sRh_ubicado = dataf.FormatCellValue(row.GetCell(j));
@@ -791,42 +784,41 @@ namespace MongoExcelMigration.Modelos
                                 break;
 
                             case "Estudio Soc-Eco":
-                            try
-                            {
-                                empleado.dtRh_soceco = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            }
-                            catch
-                            {
-                                empleado.dtRh_soceco = fecha;
-                            }
-                            break;
+                                try
+                                {
+                                    empleado.dtRh_soceco = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                catch
+                                {
+                                    empleado.dtRh_soceco = fecha;
+                                }
+                                break;
 
                             case "Alta Seg. Pub.":
-                            try
-                            {
-                                empleado.dtRh_segpub = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            }
-                            catch
-                            {
-                                empleado.dtRh_segpub = fecha;
-                            }
-                            break;
+                                try
+                                {
+                                    empleado.dtRh_segpub = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                catch
+                                {
+                                    empleado.dtRh_segpub = fecha;
+                                }
+                                break;
 
                             case "Examen Antidoping":
-                            try
-                            {
-                                empleado.dtRh_antidop = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                            }
-                            catch
-                            {
-                                empleado.dtRh_antidop = fecha;
-                            }
-                            break;
+                                try
+                                {
+                                    empleado.dtRh_antidop = DateTime.ParseExact(row.GetCell(j).StringCellValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                catch
+                                {
+                                    empleado.dtRh_antidop = fecha;
+                                }
+                                break;
                         }
-                    //Console.WriteLine("Finalizacion de una columna");
+                        //Console.WriteLine("Finalizacion de una columna");
                     }
                     empleado.aBeneficiarios = beneficiario;
-
                     PropertyInfo[] propiedades = typeof(mdlEmplea.mdl_Emplea).GetProperties(BindingFlags.Public | BindingFlags.Instance);
                     foreach (PropertyInfo propiedad in propiedades)
                     {
@@ -848,15 +840,226 @@ namespace MongoExcelMigration.Modelos
                                     break;
                             }
                         }
+
+                        if (propiedad.PropertyType == typeof(DateTime))
+                        {
+                            if ((DateTime)propiedad.GetValue(empleado) == DateTime.MinValue)
+                            {
+                                propiedad.SetValue(empleado, DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                            }
+                        }
                     }
 
+                    mdlEmplea.mdl_Conceptos[] concepto = new mdlEmplea.mdl_Conceptos[]
+                                    {
+                                        new mdlEmplea.mdl_Conceptos()
+                                        {
+                                            iPd_periodo = 0,
+                                        }
+                                    };
+                    empleado.aConceptos = concepto;
+                    PropertyInfo[] propertieA = typeof(mdlEmplea.mdl_Conceptos).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    foreach (PropertyInfo propiedad in propertieA)
+                    {
+                        if (propiedad.GetValue(concepto[0]) == null)
+                        {
+                            switch (propiedad.PropertyType)
+                            {
+                                case Type t when t == typeof(string):
+                                    propiedad.SetValue(concepto[0], string.Empty);
+                                    break;
+                                case Type t when t == typeof(int):
+                                    propiedad.SetValue(concepto[0], 0);
+                                    break;
+                                case Type t when t == typeof(double):
+                                    propiedad.SetValue(concepto[0], 0.0);
+                                    break;
+                                case Type t when t == typeof(long):
+                                    propiedad.SetValue(concepto[0], 0);
+                                    break;
+                                case Type t when t == typeof(DateTime):
+                                    propiedad.SetValue(concepto[0], DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                                    break;
+                            }
+                        }
+                    }
+
+                    mdlEmplea.mdl_Vacaciones[] vacaciones = new mdlEmplea.mdl_Vacaciones[]
+                                    {
+                                        new mdlEmplea.mdl_Vacaciones()
+                                        {
+                                            iEm_vdepto = 0,
+                                        }
+                                    };
+                    empleado.aVacaciones = vacaciones;
+                    PropertyInfo[] propertieB = typeof(mdlEmplea.mdl_Vacaciones).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    foreach (PropertyInfo propiedad in propertieB)
+                    {
+                        if (propiedad.GetValue(vacaciones[0]) == null)
+                        {
+                            switch (propiedad.PropertyType)
+                            {
+                                case Type t when t == typeof(string):
+                                    propiedad.SetValue(vacaciones[0], string.Empty);
+                                    break;
+                                case Type t when t == typeof(int):
+                                    propiedad.SetValue(concepto[0], 0);
+                                    break;
+                                case Type t when t == typeof(double):
+                                    propiedad.SetValue(concepto[0], 0.0);
+                                    break;
+                                case Type t when t == typeof(long):
+                                    propiedad.SetValue(concepto[0], 0);
+                                    break;
+                                case Type t when t == typeof(DateTime):
+                                    propiedad.SetValue(concepto[0], DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                                    break;
+                            }
+                        }
+                    }
+
+                    mdlEmplea.mdl_Salario[] salario = new mdlEmplea.mdl_Salario[]
+                                    {
+                                        new mdlEmplea.mdl_Salario()
+                                        {
+                                             iEm_topes = 0,
+                                        }
+                                    };
+                    empleado.aIncremento = salario;
+                    PropertyInfo[] propertieC = typeof(mdlEmplea.mdl_Salario).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    foreach (PropertyInfo propiedad in propertieC)
+                    {
+                        if (propiedad.GetValue(salario[0]) == null)
+                        {
+                            switch (propiedad.PropertyType)
+                            {
+                                case Type t when t == typeof(string):
+                                    propiedad.SetValue(salario[0], string.Empty);
+                                    break;
+                                case Type t when t == typeof(int):
+                                    propiedad.SetValue(salario[0], 0);
+                                    break;
+                                case Type t when t == typeof(double):
+                                    propiedad.SetValue(salario[0], 0.0);
+                                    break;
+                                case Type t when t == typeof(long):
+                                    propiedad.SetValue(salario[0], 0);
+                                    break;
+                                case Type t when t == typeof(DateTime):
+                                    propiedad.SetValue(salario[0], DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                                    break;
+                            }
+                        }
+                    }
+
+                    mdlEmplea.mdl_Historico[] historico = new mdlEmplea.mdl_Historico[]
+                                    {
+                                        new mdlEmplea.mdl_Historico()
+                                        {
+                                             sEm_tipomov = "",
+                                        }
+                                    };
+                    empleado.aHistorico = historico;
+                    PropertyInfo[] propertieD = typeof(mdlEmplea.mdl_Historico).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    foreach (PropertyInfo propiedad in propertieD)
+                    {
+                        if (propiedad.GetValue(historico[0]) == null)
+                        {
+                            switch (propiedad.PropertyType)
+                            {
+                                case Type t when t == typeof(string):
+                                    propiedad.SetValue(historico[0], string.Empty);
+                                    break;
+                                case Type t when t == typeof(int):
+                                    propiedad.SetValue(historico[0], 0);
+                                    break;
+                                case Type t when t == typeof(double):
+                                    propiedad.SetValue(historico[0], 0.0);
+                                    break;
+                                case Type t when t == typeof(long):
+                                    propiedad.SetValue(historico[0], 0);
+                                    break;
+                                case Type t when t == typeof(DateTime):
+                                    propiedad.SetValue(historico[0], DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                                    break;
+                            }
+                        }
+                    }
+
+                    mdlEmplea.mdl_Reingreso[] reingreso = new mdlEmplea.mdl_Reingreso[]
+                                    {
+                                        new mdlEmplea.mdl_Reingreso()
+                                        {
+                                             sEm_rcausa = "",
+                                        }
+                                    };
+                    empleado.aReingreso = reingreso;
+                    PropertyInfo[] propertieE = typeof(mdlEmplea.mdl_Reingreso).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    foreach (PropertyInfo propiedad in propertieE)
+                    {
+                        if (propiedad.GetValue(reingreso[0]) == null)
+                        {
+                            switch (propiedad.PropertyType)
+                            {
+                                case Type t when t == typeof(string):
+                                    propiedad.SetValue(reingreso[0], string.Empty);
+                                    break;
+                                case Type t when t == typeof(int):
+                                    propiedad.SetValue(reingreso[0], 0);
+                                    break;
+                                case Type t when t == typeof(double):
+                                    propiedad.SetValue(reingreso[0], 0.0);
+                                    break;
+                                case Type t when t == typeof(long):
+                                    propiedad.SetValue(reingreso[0], 0);
+                                    break;
+                                case Type t when t == typeof(DateTime):
+                                    propiedad.SetValue(reingreso[0], DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                                    break;
+                            }
+                        }
+                    }
+
+                    mdlEmplea.mdl_Baja[] baja = new mdlEmplea.mdl_Baja[]
+                                    {
+                                        new mdlEmplea.mdl_Baja()
+                                        {
+                                             sEm_bcausa = "",
+                                        }
+                                    };
+                    empleado.aBajas = baja;
+                    PropertyInfo[] propertieF = typeof(mdlEmplea.mdl_Baja).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    foreach (PropertyInfo propiedad in propertieF)
+                    {
+                        if (propiedad.GetValue(baja[0]) == null)
+                        {
+                            switch (propiedad.PropertyType)
+                            {
+                                case Type t when t == typeof(string):
+                                    propiedad.SetValue(baja[0], string.Empty);
+                                    break;
+                                case Type t when t == typeof(int):
+                                    propiedad.SetValue(baja[0], 0);
+                                    break;
+                                case Type t when t == typeof(double):
+                                    propiedad.SetValue(baja[0], 0.0);
+                                    break;
+                                case Type t when t == typeof(long):
+                                    propiedad.SetValue(baja[0], 0);
+                                    break;
+                                case Type t when t == typeof(DateTime):
+                                    propiedad.SetValue(baja[0], DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                                    break;
+                            }
+                        }
+                    }
 
                     BsonDocument document = new BsonDocument();
-                    mdlMongoDB.SubirDatos(empleado);
-                //Console.WriteLine("Registro subido");
+                        mdlMongoDB.SubirDatos(empleado);
                 }
 
-                Console.WriteLine("\n Proceso finalizado...");
+                    Console.WriteLine("\n Proceso finalizado...");
+                
             }
             catch (Exception ex)
             {
