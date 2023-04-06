@@ -884,6 +884,32 @@ namespace MongoExcelMigration.Modelos
                         }
                     }
 
+                    PropertyInfo[] propertieW = typeof(mdlEmplea.mdl_Beneficiario).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    foreach (PropertyInfo propiedad in propertieW)
+                    {
+                        if (propiedad.GetValue(beneficiario[0]) == null)
+                        {
+                            switch (propiedad.PropertyType)
+                            {
+                                case Type t when t == typeof(string):
+                                    propiedad.SetValue(beneficiario[0], string.Empty);
+                                    break;
+                                case Type t when t == typeof(int):
+                                    propiedad.SetValue(beneficiario[0], 0);
+                                    break;
+                                case Type t when t == typeof(double):
+                                    propiedad.SetValue(beneficiario[0], 0.0);
+                                    break;
+                                case Type t when t == typeof(long):
+                                    propiedad.SetValue(beneficiario[0], 0);
+                                    break;
+                                case Type t when t == typeof(DateTime):
+                                    propiedad.SetValue(beneficiario[0], DateTime.ParseExact("01/01/1900", "MM/dd/yyyy", CultureInfo.InvariantCulture));
+                                    break;
+                            }
+                        }
+                    }
+
                     mdlEmplea.mdl_Vacaciones[] vacaciones = new mdlEmplea.mdl_Vacaciones[]
                                     {
                                         new mdlEmplea.mdl_Vacaciones()
